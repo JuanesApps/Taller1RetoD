@@ -64,7 +64,7 @@
         android:id="@+id/layout_inferior_main">
 
         <ListView
-            android:id="@+id/lv_lista"
+            android:id="@+id/lv_listas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFFFFF">
