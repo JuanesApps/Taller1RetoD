@@ -1,55 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
         android:background="#A0A0A0"
-        android:id="@+id/layout_medio">
+        android:gravity="center"
+        android:id="@+id/layout_superior_main">
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/flecha"/>
+            android:src="@drawable/flecha" />
 
-        <EditText
-            android:layout_width="280dp"
-            android:layout_height="50dp"
-            android:text="Buscar una lista de reproducción"
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:text="Buscar Playlist"
             android:textSize="18dp"
-            android:background="#FFFFFF"
-            android:id="@+id/et_buscar_lista"/>
+            android:textColor="#FFFFFF"
+            android:gravity="center" />
 
-        <ImageButton
+        <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/lupa2"
-            android:id="@+id/ib_buscar_lista"/>
+            android:layout_marginLeft="130dp"
+            android:src="@drawable/menu" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_medio_main"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#A0A0A0"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/et_buscar_lista"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="#FFFFFF"
+            android:text="Buscar una lista de reproducción"
+            android:textSize="18dp" />
+
+        <ImageButton
+            android:id="@+id/ib_buscar_lista"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/lupa2" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/layout_inferior_main">
+
         <ListView
+            android:id="@+id/lv_lista"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
-            android:id="@+id/lv_lista">
+            android:background="#FFFFFF">
 
         </ListView>
+
     </LinearLayout>
 
 </LinearLayout>
