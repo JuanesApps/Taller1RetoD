@@ -50,7 +50,7 @@
             android:textSize="18dp" />
 
         <ImageButton
-            android:id="@+id/ib_buscar_lista"
+            android:id="@+id/ib_buscar"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"

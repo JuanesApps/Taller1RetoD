@@ -46,28 +46,32 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:background="#A0A0A0" />
+            android:background="#A0A0A0"
+            android:id="@+id/iv_playlist"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nombre del Playlist"
             android:textColor="#000000"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:id="@+id/tv_nombre_playlist"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Descripcion playlist..."
             android:textColor="#B2B2B2"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:id="@+id/tv_descripcion"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Numero de canciones"
             android:textColor="#B2B2B2"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:id="@+id/tv_numero_canciones"/>
 
     </LinearLayout>
 

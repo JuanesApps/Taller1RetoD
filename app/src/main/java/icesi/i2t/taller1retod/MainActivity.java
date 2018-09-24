@@ -3,6 +3,8 @@ package icesi.i2t.taller1retod;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.deezer.sdk.model.Permissions;
 import com.deezer.sdk.network.connect.DeezerConnect;
@@ -11,10 +13,16 @@ import com.deezer.sdk.network.connect.event.DialogListener;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText et_buscar_lista;
+    private ImageButton ib_buscar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        et_buscar_lista = findViewById(R.id.et_buscar_lista);
+        ib_buscar = findViewById(R.id.ib_buscar);
 
         String aplicationID = "301624";
         final DeezerConnect deezerConnect = new DeezerConnect(this, aplicationID);
