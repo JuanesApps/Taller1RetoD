@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -37,35 +38,11 @@ public class MainActivity extends AppCompatActivity {
         ib_buscar = findViewById(R.id.ib_buscar);
         lv_listas = findViewById(R.id.lv_listas);
         adaptadorPlaylist = new AdaptadorPlaylist(this);
+
         lv_listas.setAdapter(adaptadorPlaylist);
 
         String aplicationID = "301624";
         final DeezerConnect deezerConnect = new DeezerConnect(this, aplicationID);
-
-        // The set of Deezer Permissions needed by the app
-        String[] permissions = new String[]{
-                Permissions.BASIC_ACCESS,
-                Permissions.MANAGE_LIBRARY,
-                Permissions.LISTENING_HISTORY};
-
-        // The listener for authentication events
-        DialogListener listener = new DialogListener() {
-
-            public void onComplete(Bundle values) {
-                // store the current authentication info
-                SessionStore sessionStore = new SessionStore();
-                sessionStore.save(deezerConnect, null);
-            }
-
-            public void onCancel() {
-            }
-
-            public void onException(Exception e) {
-            }
-        };
-
-        // Launches the authentication process
-        deezerConnect.authorize(this, permissions, listener);
 
         ib_buscar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResult(Object result, Object requestId) {
                         List<Playlist> ListPlay = (List<Playlist>) result;
                         // do something with the albums
-                        for (int i=0;i<ListPlay.size();i++)
+                        for (int i = 0; i < ListPlay.size(); i++)
                             adaptadorPlaylist.agregarPlaylist(ListPlay.get(i));
                     }
 
@@ -86,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onException(Exception e, Object requestId) {
                     }
                 };
-
                 // create the request
                 //long artistId = 11472;
                 //DeezerRequest request = DeezerRequestFactory.requestArtistAlbums(artistId);
@@ -96,6 +72,16 @@ public class MainActivity extends AppCompatActivity {
 
                 // launch the request asynchronously
                 deezerConnect.requestAsync(request, listener);
+            }
+        });
+
+        lv_listas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(getApplicationContext(), PlaylistActivity.class);
+                long idPlaylist = Long.parseLong(adaptadorPlaylist.getArrayPlaylist().get(position).getId() + "");
+                i.putExtra("playlist", idPlaylist);
+                startActivity(i);
             }
         });
 

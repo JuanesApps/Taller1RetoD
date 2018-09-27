@@ -8,35 +8,39 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="#A0A0A0"
-        android:id="@+id/iv_image"/>
+        android:id="@+id/iv_image_other"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre lista"
+            android:text="Nombre Cancion"
             android:textSize="18dp"
             android:textColor="#000000"
-            android:id="@+id/tv_nombre_lista"/>
+            android:id="@+id/tv_nombre_cancion"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre del usuario creador"
+            android:text="Artista Cancion"
             android:textSize="18dp"
             android:textColor="#000000"
-            android:id="@+id/tv_nombre_creador"/>
+            android:id="@+id/tv_artista_cancion"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Numero de items"
+            android:text="Ano Lanzamiento"
             android:textSize="18dp"
             android:textColor="#000000"
-            android:id="@+id/tv_numero_items"/>
+            android:id="@+id/tv_ano_lanzamiento"/>
+
     </LinearLayout>
 
 </LinearLayout>

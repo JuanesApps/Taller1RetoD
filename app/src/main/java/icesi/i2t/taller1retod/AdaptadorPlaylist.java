@@ -50,8 +50,8 @@ public class AdaptadorPlaylist extends BaseAdapter {
         ImageView iv_image = viewPlay.findViewById(R.id.iv_image);
         // Lleno los componentes del view
         tv_nombre_lista.setText("Nombre Lista: "+arrayPlaylist.get(position).getTitle());
-        tv_nombre_lista.setText("Nombre Creador: "+arrayPlaylist.get(position).getCreator());
-        tv_nombre_lista.setText("Numero Items: "+arrayPlaylist.get(position));
+        tv_nombre_creador.setText("Nombre Creador: "+arrayPlaylist.get(position).getCreator());
+        tv_numero_items.setText("Numero Items: "+arrayPlaylist.get(position).getTracks().size());
         Picasso.get().load(arrayPlaylist.get(position).getSmallImageUrl()).into(iv_image);
 
         return viewPlay;
@@ -60,5 +60,13 @@ public class AdaptadorPlaylist extends BaseAdapter {
     public void agregarPlaylist(Playlist playlist){
         arrayPlaylist.add(playlist);
         notifyDataSetChanged();
+    }
+
+    public ArrayList<Playlist> getArrayPlaylist() {
+        return arrayPlaylist;
+    }
+
+    public void setArrayPlaylist(ArrayList<Playlist> arrayPlaylist) {
+        this.arrayPlaylist = arrayPlaylist;
     }
 }
