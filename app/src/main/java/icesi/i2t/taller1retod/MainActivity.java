@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 long idPlaylist = Long.parseLong(adaptadorPlaylist.getArrayPlaylist().get(position).getId() + "");
                 i.putExtra("playlist", idPlaylist);
                 startActivity(i);
+                finish();
             }
         });
 

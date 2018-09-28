@@ -34,7 +34,11 @@ public class TrackActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track);
 
-        final long idTrackRecived = getIntent().getExtras().getLong("track");
+        long idTrackRecived = 0;
+        Bundle bundle = getIntent().getExtras();
+        if(bundle!=null) {
+            idTrackRecived = bundle.getLong("track");
+        }
 
         tv_nombre = findViewById(R.id.tv_nombre);
         tv_artista = findViewById(R.id.tv_artista);
@@ -71,8 +75,10 @@ public class TrackActivity extends AppCompatActivity {
         request.setId("myRequest");
 
         // launch the request asynchronously
-        deezerConnect.requestAsync(request, jsonListener);
+        //deezerConnect.requestAsync(request, jsonListener);
 
+
+        final long finalIdTrackRecived = idTrackRecived;
         btn_escuchar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,8 +86,7 @@ public class TrackActivity extends AppCompatActivity {
                 try {
                     TrackPlayer trackPlayer = new TrackPlayer(getApplication(), deezerConnect, new WifiAndMobileNetworkStateChecker());
                     // start playing music
-                    long trackId = idTrackRecived;
-                    trackPlayer.playTrack(trackId);
+                    trackPlayer.playTrack(finalIdTrackRecived);
                     // ...
                     // to make sure the player is stopped (for instance when the activity is closed)
                     trackPlayer.stop();

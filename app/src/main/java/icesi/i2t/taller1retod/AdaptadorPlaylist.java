@@ -50,7 +50,7 @@ public class AdaptadorPlaylist extends BaseAdapter {
         ImageView iv_image = viewPlay.findViewById(R.id.iv_image);
         // Lleno los componentes del view
         tv_nombre_lista.setText("Nombre Lista: "+arrayPlaylist.get(position).getTitle());
-        tv_nombre_creador.setText("Nombre Creador: "+arrayPlaylist.get(position).getCreator());
+        tv_nombre_creador.setText("Nombre Creador: "+arrayPlaylist.get(position).getCreator().getName());
         tv_numero_items.setText("Numero Items: "+arrayPlaylist.get(position).getTracks().size());
         Picasso.get().load(arrayPlaylist.get(position).getSmallImageUrl()).into(iv_image);
 

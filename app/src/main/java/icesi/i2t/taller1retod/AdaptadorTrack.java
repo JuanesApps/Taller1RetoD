@@ -1,6 +1,7 @@
 package icesi.i2t.taller1retod;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,13 +49,15 @@ public class AdaptadorTrack extends BaseAdapter {
         TextView tv_nombre_cancion = viewPlay.findViewById(R.id.tv_nombre_cancion);
         TextView tv_artista_cancion = viewPlay.findViewById(R.id.tv_artista_cancion);
         TextView tv_ano_lanzamiento = viewPlay.findViewById(R.id.tv_ano_lanzamiento);
-        ImageView iv_image = viewPlay.findViewById(R.id.iv_image);
+        ImageView iv_image = viewPlay.findViewById(R.id.iv_image_other);
         // Lleno los componentes del view
         tv_nombre_cancion.setText("Nombre Canción: "+arrayTracks.get(position).getTitle());
         tv_artista_cancion.setText("Artista Canción: "+arrayTracks.get(position).getArtist());
         tv_ano_lanzamiento.setText("Año Lanzamiento: "+arrayTracks.get(position).getDiscNumber());
-        Picasso.get().load(arrayTracks.get(position).getPreviewUrl()).into(iv_image);
 
+        Log.e("ERROR",""+iv_image);
+
+            Picasso.get().load(arrayTracks.get(position).getAlbum().getSmallImageUrl()).into(iv_image);
         return viewPlay;
     }
 
