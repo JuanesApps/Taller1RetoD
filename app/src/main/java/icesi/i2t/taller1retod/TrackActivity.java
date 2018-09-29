@@ -86,10 +86,10 @@ public class TrackActivity extends AppCompatActivity {
                     tv_duracion.setText("Duración: 0" + durationMinutes + ":" + durationSeconds);
                 } else if (durationSeconds < 10) {
                     tv_duracion.setText("Duración: " + durationMinutes + ":0" + durationSeconds);
-                } else if (durationMinutes < 10 && durationSeconds < 0) {
+                } else if (durationMinutes < 10 && durationSeconds < 10) {
                     tv_duracion.setText("Duración: 0" + durationMinutes + ":0" + durationSeconds);
                 } else {
-                    tv_duracion.setText("Duración: 0" + durationMinutes + ":" + durationSeconds);
+                    tv_duracion.setText("Duración: " + durationMinutes + ":" + durationSeconds);
 
                 }
             }
