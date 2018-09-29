@@ -14,6 +14,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:id="@+id/iv_flecha_to_main"
             android:src="@drawable/flecha" />
 
         <TextView
@@ -44,9 +45,8 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="#A0A0A0"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:id="@+id/iv_playlist"/>
 
         <TextView
@@ -61,15 +61,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Descripcion playlist..."
-            android:textColor="#B2B2B2"
+            android:textColor="#000000"
             android:textSize="18dp"
+            android:layout_gravity="center"
             android:id="@+id/tv_descripcion"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Numero de canciones"
-            android:textColor="#B2B2B2"
+            android:textColor="#000000"
             android:textSize="18dp"
             android:id="@+id/tv_numero_canciones"/>
 

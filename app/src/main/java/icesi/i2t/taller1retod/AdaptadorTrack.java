@@ -52,8 +52,8 @@ public class AdaptadorTrack extends BaseAdapter {
         ImageView iv_image = viewPlay.findViewById(R.id.iv_image_other);
         // Lleno los componentes del view
         tv_nombre_cancion.setText("Nombre Canción: "+arrayTracks.get(position).getTitle());
-        tv_artista_cancion.setText("Artista Canción: "+arrayTracks.get(position).getArtist());
-        tv_ano_lanzamiento.setText("Año Lanzamiento: "+arrayTracks.get(position).getDiscNumber());
+        tv_artista_cancion.setText("Artista Canción: "+arrayTracks.get(position).getArtist().getName());
+        tv_ano_lanzamiento.setText("Rank: "+arrayTracks.get(position).getRank());
 
         Log.e("ERROR",""+iv_image);
 
@@ -63,6 +63,13 @@ public class AdaptadorTrack extends BaseAdapter {
 
     public void agregarTrack(Track track){
         arrayTracks.add(track);
+        notifyDataSetChanged();
+    }
+
+    public void limpiarTrack() {
+        if (arrayTracks.size() != 0 && arrayTracks != null) {
+            arrayTracks.clear();
+        }
         notifyDataSetChanged();
     }
 

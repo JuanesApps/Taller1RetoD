@@ -18,7 +18,7 @@ public class AdaptadorPlaylist extends BaseAdapter {
     private Activity activity;
     private ArrayList<Playlist> arrayPlaylist;
 
-    public AdaptadorPlaylist(Activity activity){
+    public AdaptadorPlaylist(Activity activity) {
         this.activity = activity;
         arrayPlaylist = new ArrayList<>();
     }
@@ -49,16 +49,23 @@ public class AdaptadorPlaylist extends BaseAdapter {
         TextView tv_numero_items = viewPlay.findViewById(R.id.tv_numero_items);
         ImageView iv_image = viewPlay.findViewById(R.id.iv_image);
         // Lleno los componentes del view
-        tv_nombre_lista.setText("Nombre Lista: "+arrayPlaylist.get(position).getTitle());
-        tv_nombre_creador.setText("Nombre Creador: "+arrayPlaylist.get(position).getCreator().getName());
-        tv_numero_items.setText("Numero Items: "+arrayPlaylist.get(position).getTracks().size());
+        tv_nombre_lista.setText("Nombre Lista: " + arrayPlaylist.get(position).getTitle());
+        tv_nombre_creador.setText("Nombre Creador: " + arrayPlaylist.get(position).getCreator().getName());
+        tv_numero_items.setText("ID: " + arrayPlaylist.get(position).getId());
         Picasso.get().load(arrayPlaylist.get(position).getSmallImageUrl()).into(iv_image);
 
         return viewPlay;
     }
 
-    public void agregarPlaylist(Playlist playlist){
+    public void agregarPlaylist(Playlist playlist) {
         arrayPlaylist.add(playlist);
+        notifyDataSetChanged();
+    }
+
+    public void limpiarPlaylist() {
+        if (arrayPlaylist.size() != 0 && arrayPlaylist != null) {
+            arrayPlaylist.clear();
+        }
         notifyDataSetChanged();
     }
 

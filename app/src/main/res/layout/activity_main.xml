@@ -46,7 +46,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:background="#FFFFFF"
-            android:text="Buscar una lista de reproducción"
+            android:hint="Buscar una lista de reproducción"
             android:textSize="18dp" />
 
         <ImageButton
