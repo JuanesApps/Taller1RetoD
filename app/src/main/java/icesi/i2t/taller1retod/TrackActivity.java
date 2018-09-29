@@ -81,8 +81,17 @@ public class TrackActivity extends AppCompatActivity {
                     i++;
                 }
                 durationMinutes = i;
-                durationSeconds = track.getDuration() - (60*i);
-                tv_duracion.setText("Duración: " + durationMinutes + ":" + durationSeconds);
+                durationSeconds = track.getDuration() - (60 * i);
+                if (durationMinutes < 10) {
+                    tv_duracion.setText("Duración: 0" + durationMinutes + ":" + durationSeconds);
+                } else if (durationSeconds < 10) {
+                    tv_duracion.setText("Duración: " + durationMinutes + ":0" + durationSeconds);
+                } else if (durationMinutes < 10 && durationSeconds < 0) {
+                    tv_duracion.setText("Duración: 0" + durationMinutes + ":0" + durationSeconds);
+                } else {
+                    tv_duracion.setText("Duración: 0" + durationMinutes + ":" + durationSeconds);
+
+                }
             }
 
             public void onUnparsedResult(String requestResponse, Object requestId) {
@@ -105,7 +114,6 @@ public class TrackActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // create the player |application
                 try {
-                    System.out.println(v.callOnClick());
                     TrackPlayer trackPlayer = new TrackPlayer(getApplication(), deezerConnect, new WifiAndMobileNetworkStateChecker());
                     // start playing music
                     trackPlayer.playTrack(finalIdTrackRecived);
@@ -124,9 +132,9 @@ public class TrackActivity extends AppCompatActivity {
         iv_flecha_to_playlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),PlaylistActivity.class);
-                i.putExtra("idFromTrack",aux);
-                i.putExtra("adaptadorPlaylist",aux2);
+                Intent i = new Intent(getApplicationContext(), PlaylistActivity.class);
+                i.putExtra("idFromTrack", aux);
+                i.putExtra("adaptadorPlaylist", aux2);
                 startActivity(i);
                 finish();
             }
