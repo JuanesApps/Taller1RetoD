@@ -1,12 +1,15 @@
 package icesi.i2t.taller1retod;
 
+import android.app.SearchManager;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.deezer.sdk.model.Permissions;
 import com.deezer.sdk.model.Playlist;
@@ -33,6 +36,7 @@ public class TrackActivity extends AppCompatActivity {
     private TextView tv_album;
     private TextView tv_duracion;
     private Button btn_escuchar;
+    private String webString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +71,7 @@ public class TrackActivity extends AppCompatActivity {
             public void onResult(Object result, Object requestId) {
                 Track track = (Track) result;
 
+                webString = track.getPreviewUrl();
                 // Llenar las variables
                 Picasso.get().load(track.getArtist().getSmallImageUrl()).into(iv_cancion);
                 tv_nombre.setText("Nombre: " + track.getTitle());
@@ -82,9 +87,9 @@ public class TrackActivity extends AppCompatActivity {
                 }
                 durationMinutes = i;
                 durationSeconds = track.getDuration() - (60 * i);
-                if (durationMinutes < 10) {
+                if (durationMinutes < 10 && durationSeconds >= 10) {
                     tv_duracion.setText("Duración: 0" + durationMinutes + ":" + durationSeconds);
-                } else if (durationSeconds < 10) {
+                } else if (durationSeconds < 10 && durationMinutes >= 10) {
                     tv_duracion.setText("Duración: " + durationMinutes + ":0" + durationSeconds);
                 } else if (durationMinutes < 10 && durationSeconds < 10) {
                     tv_duracion.setText("Duración: 0" + durationMinutes + ":0" + durationSeconds);
@@ -112,20 +117,30 @@ public class TrackActivity extends AppCompatActivity {
         btn_escuchar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // create the player |application
-                try {
-                    TrackPlayer trackPlayer = new TrackPlayer(getApplication(), deezerConnect, new WifiAndMobileNetworkStateChecker());
-                    // start playing music
-                    trackPlayer.playTrack(finalIdTrackRecived);
-                    // ...
-                    // to make sure the player is stopped (for instance when the activity is closed)
-                    //trackPlayer.stop();
-                    //trackPlayer.release();
-                } catch (TooManyPlayersExceptions tooManyPlayersExceptions) {
-                    tooManyPlayersExceptions.printStackTrace();
-                } catch (DeezerError deezerError) {
-                    deezerError.printStackTrace();
+                String[] arrayWeb = webString.split("//");
+                //System.out.println(arrayWeb[0]);
+                //System.out.println(arrayWeb[1]);
+                Uri web = Uri.parse(arrayWeb[0] + "//" + arrayWeb[1]);
+                Intent i = new Intent(Intent.ACTION_VIEW, web);
+                Intent chooser = Intent.createChooser(i, "Continuar con:");
+                if (i.resolveActivity(getPackageManager()) != null) {
+                    startActivity(i);
                 }
+                //finish();
+                // try {
+                // create the player |application
+                //TrackPlayer trackPlayer = new TrackPlayer(getApplication(), deezerConnect, new WifiAndMobileNetworkStateChecker());
+                // start playing music
+                //trackPlayer.playTrack(finalIdTrackRecived);
+                // ...
+                // to make sure the player is stopped (for instance when the activity is closed)
+                //trackPlayer.stop();
+                //trackPlayer.release();
+                //} catch (TooManyPlayersExceptions tooManyPlayersExceptions) {
+                //tooManyPlayersExceptions.printStackTrace();
+                //} catch (DeezerError deezerError) {
+                //deezerError.printStackTrace();
+                //}
             }
         });
 
