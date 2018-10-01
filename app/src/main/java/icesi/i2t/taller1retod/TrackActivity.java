@@ -124,7 +124,7 @@ public class TrackActivity extends AppCompatActivity {
                 Intent i = new Intent(Intent.ACTION_VIEW, web);
                 Intent chooser = Intent.createChooser(i, "Continuar con:");
                 if (i.resolveActivity(getPackageManager()) != null) {
-                    startActivity(i);
+                    startActivity(chooser);
                 }
                 //finish();
                 // try {
